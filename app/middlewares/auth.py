@@ -18,6 +18,7 @@ def auth_middleware(f):
         try:
             payload = jwtDecode(token, JWT_SECRET)
         except Exception as e:
+            print(e)
             return jsonify({"message": STATUS_CODES.get(403)}), 403
         # except jwt.ExpiredSignatureError:
         #     return jsonify({"message": STATUS_CODES.get(403)}), 403

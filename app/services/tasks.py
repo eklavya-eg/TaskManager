@@ -14,14 +14,15 @@ def CreateTask(title:str, description:str, admin_id:str|UUID):
 
 def FetchTasks(userid:str):
     tasks = (
-        db.session.query().filter(Task.admin_id==userid).all()
+        db.session.query(Task).filter(Task.admin_id==userid).all()
     )
+    if not tasks: return [], 404
     tasks = detach(tasks)
     return tasks, 200 if len(tasks)>0 else 404
 
 def FetchTask(id:UUID | str, userid:UUID | str):
     task = (
-        db.session.query().filter(Task.id==id and Task.admin_id==userid).first()
+        db.session.query(Task).filter(Task.id==id and Task.admin_id==userid).first()
     )
     task = detach(task)
     return task, 404 if not task else 200
@@ -29,7 +30,7 @@ def FetchTask(id:UUID | str, userid:UUID | str):
 
 def UpdateTask(id:str | UUID, admin_id:str | UUID, title:str=None, description:str=None, completed:bool=None):
     task = (
-        db.session.query().filter(Task.id==id and Task.admin_id==admin_id).first()
+        db.session.query(Task).filter(Task.id==id and Task.admin_id==admin_id).first()
     )
     if not task: return task, 404
     if(title): task.title=title
@@ -43,7 +44,7 @@ def UpdateTask(id:str | UUID, admin_id:str | UUID, title:str=None, description:s
 
 def DeleteTask(id:str | UUID, admin_id:str | UUID):
     task = (
-        db.session.query().filter(Task.id==id and Task.admin_id==admin_id).first()
+        db.session.query(Task).filter(Task.id==id and Task.admin_id==admin_id).first()
     )
     if not task: return False, 404
     db.session.delete(task)

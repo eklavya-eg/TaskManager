@@ -30,5 +30,5 @@ def jwtEncode(payload:dict, JWT_SECRET:str):
     return auth
 
 def jwtDecode(token:str, JWT_SECRET:str):
-    payload = jwt.decode(token, JWT_SECRET, algorithm=["HS256"])
+    payload = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
     return payload
