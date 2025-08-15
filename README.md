@@ -2,8 +2,23 @@
 
 # Title: Task Manager API
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
+### For Production app/__init__.py
+```bash
+# app.config.from_object(TestConfig)
+app.config.from_object(Config)
+```
+### For Test (pytest) app/__init__.py
+```bash
+app.config.from_object(TestConfig)
+# app.config.from_object(Config)
+```
+
+### Python version used
+```bash
+python 3.11.9
+```
 ### Create Virtual Environment
 ```bash
 python -m venv venv
@@ -24,33 +39,19 @@ python -m flask run
 ```bash
 pytest
 ```
-## Task Management API
 
+## Task Management API
 A simple Flask-based API for user authentication and task management.
 
----
-
-### Setup
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python -m flask run
-```
 Authentication
-
 All task-related routes require an auth header with a Bearer token.
-
 Header format:
 ```bash
 auth: Bearer <JWT_TOKEN>
 ```
 Tokens are obtained from /auth/signup or /auth/signin.
 
-API Reference
-Auth Routes
-POST /auth/signup
+Status Codes
 ```bash
 STATUS_CODES = {
     200: "Success",
@@ -63,8 +64,10 @@ STATUS_CODES = {
 }
 ```
 
+API Reference
+Auth Routes
+POST /auth/signup
 Create a new user and get a token.
-
 Request:
 ```bash
 {
@@ -82,9 +85,7 @@ Response:
 }
 ```
 POST /auth/signin
-
 Login and get a token.
-
 Request:
 ```bash
 {
@@ -102,9 +103,7 @@ Response:
 ```
 Task Routes (Require Auth Header)
 GET /tasks
-
 Get all tasks for the authenticated user.
-
 Response:
 ```bash
 {
@@ -121,9 +120,7 @@ Response:
 }
 ```
 GET /tasks/<task_id>
-
 Get a single task.
-
 Response:
 ```bash
 {
@@ -139,9 +136,7 @@ Response:
 
 ```
 POST /tasks
-
 Create a task.
-
 Request:
 ```bash
 {
@@ -157,9 +152,7 @@ Response:
 }
 ```
 PUT /tasks/<task_id>
-
 Update a task.
-
 Request:
 ```bash
 {
@@ -176,22 +169,13 @@ Response:
 }
 ```
 DELETE /tasks/<task_id>
-
 Delete a task.
-
 Response:
 ```bash
 {
   "message": "Success"
 }
 ```
-
-
-
-
-
-
-
 
 ## Objective:
 Build a RESTful API for a simple task manager application using either Flask or Django. The API should allow users to perform basic CRUD operations on tasks and should include user authentication.
