@@ -4,6 +4,17 @@
 
 ## Setup Instructions
 
+### For Production app/__init__.py
+```bash
+# app.config.from_object(TestConfig)
+app.config.from_object(Config)
+```
+### For Test (pytest) app/__init__.py
+```bash
+app.config.from_object(TestConfig)
+# app.config.from_object(Config)
+```
+
 ### Python version used
 ```bash
 python 3.11.9
