@@ -2,8 +2,12 @@
 
 # Title: Task Manager API
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
+### Python version used
+```bash
+python 3.11.9
+```
 ### Create Virtual Environment
 ```bash
 python -m venv venv
