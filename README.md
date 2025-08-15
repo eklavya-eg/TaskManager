@@ -24,13 +24,13 @@ python -m flask run
 ```bash
 pytest
 ```
-# Task Management API
+## Task Management API
 
 A simple Flask-based API for user authentication and task management.
 
 ---
 
-## Setup
+### Setup
 
 ```bash
 python -m venv venv
