@@ -50,7 +50,7 @@ python -m flask run
 ```
 ### Run Tests
 ```bash
-pytest
+python -m pytest
 ```
 
 ## Task Management API
