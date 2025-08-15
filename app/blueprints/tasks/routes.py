@@ -102,8 +102,6 @@ def task(task_id:str|UUID):
     try:
         task, sc = TaskServices.FetchTask(task_id, user_uuid)
     except Exception as e:
-        traceback.print_exc()
-        print(f"ERROR: {e}")  
         return jsonify({"message": STATUS_CODES.get(500)}), 500
     
     return jsonify({
