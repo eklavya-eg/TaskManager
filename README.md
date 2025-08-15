@@ -4,6 +4,20 @@
 
 ## Setup Instructions
 
+### git clone
+```bash
+git clone https://github.com/eklavya-eg/TaskManager.git
+```
+### .env.example -> .env create file .env
+### copy .env.example to .env or just rename .env.example to .env
+```bash
+code ./env
+```
+### Database uri (not needed for pytest) or use any cloud storage
+```bash
+docker run --name postgres -e POSTGRES_USER=user -e POSTGRES_PASSWORD=user -e POSTGRES_DB=tasks -v task-manager:/var/lib/postgresql/data -p 5432:5432 -d postgres
+DATABASE_URI=postgresql://user:user@localhost:5432/tasks
+```
 ### For Production app/__init__.py
 ```bash
 # app.config.from_object(TestConfig)
@@ -14,7 +28,6 @@ app.config.from_object(Config)
 app.config.from_object(TestConfig)
 # app.config.from_object(Config)
 ```
-
 ### Python version used
 ```bash
 python 3.11.9
